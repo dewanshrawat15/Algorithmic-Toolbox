@@ -1,5 +1,4 @@
 # Uses python3
-from sys import stdin
 
 def fibonacci_sum_squares_naive(n):
     if n <= 1:
@@ -15,6 +14,26 @@ def fibonacci_sum_squares_naive(n):
 
     return sum % 10
 
+def period(m):
+    a, b = 0, 1
+    c = a + b
+    for i in range(pow(m, 2)):
+        c = (a + b) % m
+        a, b = b, c
+        if a == 0 and b == 1:
+            return i + 1
+
+def fn(n, m):
+    remainder = n % period(m)
+    first = 0
+    second = 1
+    res = remainder
+    for i in range(1, remainder):
+        res = (first + second) % m
+        first, second = second, res
+    return res % m
+
 if __name__ == '__main__':
-    n = int(stdin.read())
-    print(fibonacci_sum_squares_naive(n))
+    n = int(input())
+    # print(fibonacci_sum_squares_naive(n))
+    print((fn(n + 1, 10) * fn(n, 10)) % 10)
