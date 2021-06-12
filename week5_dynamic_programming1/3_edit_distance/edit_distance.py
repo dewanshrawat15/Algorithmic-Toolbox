@@ -27,7 +27,7 @@ def EditDistance(s1, s2):
             if s1[i - 1] != s2[j - 1]:
                 Matrix[i][j] = min(insertion, deletion, mismatch)
     
-    return (int(Matrix[ln_s1][ln_s2]), Matrix)
+    return int(Matrix[ln_s1][ln_s2])
 
 def OptimalAlignment(Matrix, s1, s2, top, bottom, i, j):
     """ Finds the optimal alignment of two strings given the edit matrix
@@ -53,7 +53,4 @@ def OptimalAlignment(Matrix, s1, s2, top, bottom, i, j):
 
 s1, s2 = input(), input()
 edit_distance, Matrix = EditDistance(s1, s2)
-# top, bottom = OptimalAlignment(Matrix, s1, s2, [], [], len(s1), len(s2))
 print(edit_distance)
-# print(f'Editing distance : {edit_distance}')
-# print(f"Optimal alignment:\n{top}\n{bottom}")

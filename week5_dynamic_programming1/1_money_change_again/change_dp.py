@@ -20,6 +20,12 @@ def get_change_rec_dp(m, dp):
     return min(ways) + 1
 
 def get_change_it(m):
+    if m == 0:
+        return 0
+    if m == 1:
+        return 1
+    if m == 2:
+        return 2
     dp = [0] + [10**9] * m
     dp[1] = 1
     dp[2] = 2
@@ -36,5 +42,4 @@ def get_change_it(m):
 if __name__ == '__main__':
     m = int(input())
     dp = [-1 for i in range(m)]
-    print(get_change_rec_dp(m, dp) - 1)
     print(get_change_it(m))
